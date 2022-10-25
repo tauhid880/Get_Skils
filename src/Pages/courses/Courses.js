@@ -3,13 +3,13 @@ import LeftSideBar from "../Shared/LeftSideBar/LeftSideBar";
 
 const Courses = () => {
   return (
-    <div className="h-screen ">
-      <div className="grid grid-cols-12 gap-5 min-h-screen ">
-        <div className="bg-red-500 col-span-2">
+    <div className="min-h-screen">
+      <div className="grid grid-cols-12 gap-5">
+        <div className="bg-slate-400 col-span-2">
           <LeftSideBar></LeftSideBar>
         </div>
         <div className="bg-yellow-600 col-span-10">
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 shadow-xl m-5">
             <figure>
               <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
             </figure>

@@ -9,26 +9,16 @@ const LeftSideBar = () => {
       .then((data) => setCategories(data));
   }, []);
   return (
-    <div>
-      <h2>All Courses - {categories.length}</h2>
-      <div className="drawer">
-        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
-          <label htmlFor="my-drawer" className="btn btn-primary drawer-button">
-            See All Course
-          </label>
-        </div>
-        <div className="drawer-side">
-          <label htmlFor="my-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-            <li>
-              <a>Sidebar Item 1</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
-          </ul>
-        </div>
+    <div className="">
+      <h1 className="text-2xl font-semibold text-center mt-3">
+        All Courses - {categories.length}
+      </h1>
+      <div className="m-5">
+        {categories.map((category) => (
+          <button className="btn btn-block glass text-gray-900 shadow-xl my-4 normal-case">
+            {category.name}
+          </button>
+        ))}
       </div>
     </div>
   );
