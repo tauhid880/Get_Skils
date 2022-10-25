@@ -4,7 +4,7 @@ import { FaBookOpen } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <div className="navbar bg-rose-200 ">
+    <div className="navbar bg-rose-200">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost text-black lg:hidden">
