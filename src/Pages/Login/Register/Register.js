@@ -44,10 +44,7 @@ const Register = () => {
             </div>
             <form>
               <div className="relative w-full mb-3">
-                <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlfor="grid-password"
-                >
+                <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                   {" "}
                   Full Name
                 </label>
@@ -59,10 +56,7 @@ const Register = () => {
               </div>
 
               <div className="relative w-full mb-3">
-                <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlfor="grid-password"
-                >
+                <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                   {" "}
                   Photo URL
                 </label>
@@ -74,10 +68,7 @@ const Register = () => {
               </div>
 
               <div className="relative w-full mb-3">
-                <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlfor="grid-password"
-                >
+                <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                   Email
                 </label>
                 <input
@@ -88,10 +79,7 @@ const Register = () => {
               </div>
 
               <div className="relative w-full mb-3">
-                <label
-                  className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlfor="grid-password"
-                >
+                <label className="block uppercase text-blueGray-600 text-xs font-bold mb-2">
                   Password
                 </label>
                 <input
@@ -110,9 +98,7 @@ const Register = () => {
                   />
                   <span className="ml-2 text-sm font-semibold text-blueGray-600">
                     I agree with the {""}
-                    <a href="javascript:void(0)" className="text-pink-500">
-                      Privacy Policy
-                    </a>
+                    <Link className="text-pink-500">Privacy Policy</Link>
                   </span>
                 </label>
               </div>

@@ -4,7 +4,7 @@ import { FaBookOpen } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <div className="navbar bg-zinc-400">
+    <div className="navbar bg-lime-100 w-screen">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost text-black lg:hidden">
@@ -43,10 +43,10 @@ const Header = () => {
         </div>
         <Link
           to={"/"}
-          className="btn btn-ghost text-black normal-case text-3xl"
+          className="btn btn-ghost text-black normal-case xl lg:text-3xl"
         >
           <FaBookOpen className="mr-2 text-zinc-600"></FaBookOpen>{" "}
-          <span className="text-red-400">Get</span> Skills
+          <span className="text-red-400 text-sm lg:text-2xl">Get</span> Skills
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

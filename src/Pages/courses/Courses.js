@@ -1,30 +1,16 @@
 import React from "react";
 import LeftSideBar from "../Shared/LeftSideBar/LeftSideBar";
+import RightSideBar from "../Shared/RightSideBar/RightSideBar";
 
 const Courses = () => {
   return (
     <div className="min-h-screen">
-      <div className="grid grid-cols-12 gap-5">
-        <div className="bg-slate-400 col-span-2">
+      <div className="grid col-span-12 lg:grid-cols-12 ">
+        <div className="bg-lime-50 col-span-6 lg:col-span-2">
           <LeftSideBar></LeftSideBar>
         </div>
-        <div className="bg-yellow-600 col-span-10">
-          <div className="card w-96 bg-base-100 shadow-xl m-5">
-            <figure>
-              <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">
-                Shoes!
-                <div className="badge badge-secondary">NEW</div>
-              </h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <div className="badge badge-outline">Fashion</div>
-                <div className="badge badge-outline">Products</div>
-              </div>
-            </div>
-          </div>
+        <div className="bg-lime-50 col-span-6 lg:col-span-10">
+          <RightSideBar></RightSideBar>
         </div>
       </div>
     </div>
