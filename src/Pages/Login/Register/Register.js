@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
@@ -7,6 +7,7 @@ import { fromJSON } from "postcss";
 
 const Register = () => {
   const { providerLogin, createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,9 +22,13 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        setError("");
         navigate("/");
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.error(e);
+        setError(e.message);
+      });
   };
 
   // Google sign in
@@ -34,7 +39,10 @@ const Register = () => {
         const user = result.user;
         console.log(user);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
 
   return (
@@ -136,6 +144,7 @@ const Register = () => {
                     <Link className="text-pink-500">Privacy Policy</Link>
                   </span>
                 </label>
+                <p className="text-red-400 font-semibold text-lg">{error}</p>
               </div>
 
               <div className="text-center mt-6">

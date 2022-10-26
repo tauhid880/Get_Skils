@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
@@ -6,6 +6,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const { providerLogin, signIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,11 +18,13 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
+        setError("");
         navigate("/");
         console.log(user);
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
       });
   };
 
@@ -33,7 +36,10 @@ const Login = () => {
         const user = result.user;
         console.log(user);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
   };
   return (
     <div className="bg-gray-700">
@@ -98,18 +104,7 @@ const Login = () => {
 
           <div className="w-3/4 flex flex-row justify-between">
             <div className=" flex items-center gap-x-1">
-              <input
-                type="checkbox"
-                name="remember"
-                id=""
-                className=" w-4 h-4  "
-              />
-              <label className="text-sm text-slate-400">Remember me</label>
-            </div>
-            <div>
-              <Link className="text-sm text-slate-400 hover:text-blue-500">
-                Forgot?
-              </Link>
+              <label className="text-lg font-bold text-red-400">{error}</label>
             </div>
           </div>
 
