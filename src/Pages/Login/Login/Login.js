@@ -5,13 +5,22 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { providerLogin } = useContext(AuthContext);
+  const { providerLogin, signIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        form.reset();
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const googleProvider = new GoogleAuthProvider();

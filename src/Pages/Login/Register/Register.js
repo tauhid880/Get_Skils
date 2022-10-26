@@ -3,9 +3,10 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
+import { fromJSON } from "postcss";
 
 const Register = () => {
-  const { providerLogin } = useContext(AuthContext);
+  const { providerLogin, createUser } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,7 +14,17 @@ const Register = () => {
     const password = form.password.value;
     const name = form.name.value;
     const photoURL = form.photoURL.value;
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+      })
+      .catch((e) => console.error(e));
   };
+
+  // Google sign in
   const googleProvider = new GoogleAuthProvider();
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
