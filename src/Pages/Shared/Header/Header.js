@@ -1,10 +1,17 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaUser } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
-    <div className="navbar bg-lime-100 w-screen">
+    <div className="navbar bg-lime-100 w-auto p-0">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost text-black lg:hidden">
@@ -25,7 +32,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
+            className="menu text-black menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
           >
             <li className="">
               <Link to={"/"}>Home</Link>
@@ -65,16 +72,40 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end mx-5">
-        <Link
-          to={"/login"}
-          className="btn btn-outline rounded-full border-0 mr-2 text-black"
-        >
-          Log In
-        </Link>
-        <Link to={"/register"} className="btn btn-outline border-0 text-black">
-          Register
-        </Link>
+      <div className="navbar-end  justify-center ">
+        <div className="  text-xs lg:text-sm text-black">
+          {user?.uid ? (
+            <>
+              <button onClick={handleLogOut} className="btn btn-ghost mx-2">
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="flex">
+                <Link
+                  to={"/login"}
+                  className="btn btn-ghost border-0 text-xs p-1 m-3  lg:text-sm text-black"
+                >
+                  Log In
+                </Link>
+                <Link
+                  to={"/register"}
+                  className="btn btn-ghost border-0 text-xs p-1 m-3 lg:text-sm text-black"
+                >
+                  Register
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
+        <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+          {user?.photoURL ? (
+            <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
+          ) : (
+            <FaUser></FaUser>
+          )}
+        </div>
       </div>
     </div>
   );

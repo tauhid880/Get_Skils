@@ -1,14 +1,67 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+  const { providerLogin } = useContext(AuthContext);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
   return (
-    <form className="bg-gray-10  ">
-      <div className="flex justify-center h-screen w-screen  items-center">
-        <div className="w-full md:w-1/2 flex flex-col items-center shadow-2xl ">
+    <div className="bg-gray-700">
+      <div className="flex justify-center h-screen w-screen items-center">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full md:w-1/2 p-10 flex flex-col items-center shadow-2xl "
+        >
           <h1 className="text-center text-2xl font-bold text-gray-400 mb-6">
             LOGIN
           </h1>
+
+          <div className="google">
+            <div className="rounded-t mb-0 px-6 py-6">
+              <div className="text-center mb-3">
+                <h6 className=" text-lg text-gray-300 font-bold">
+                  Log In with
+                </h6>
+              </div>
+              <div className="btn-wrapper normal-case text-center">
+                <button
+                  className="bg-white normal-case text-black active:bg-blue-200  font-semibold px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1  shadow hover:shadow-md inline-flex items-center  text-xs ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  <FaGithub className="mr-1 text-xl"></FaGithub>
+                  Github{" "}
+                </button>
+                <button
+                  onClick={handleGoogleSignIn}
+                  className="bg-white text-black  text-blueGray-700 font-semibold px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1  shadow hover:shadow-md inline-flex items-center  text-xs ease-linear transition-all duration-150"
+                  type="button"
+                >
+                  <FaGoogle className="mr-1 text-xl"></FaGoogle>
+                  Google
+                </button>
+              </div>
+              <hr className="mt-6 border-b-1 border-blueGray-300" />
+            </div>
+          </div>
 
           <div className="w-3/4 mb-6">
             <input
@@ -17,6 +70,7 @@ const Login = () => {
               id="email"
               className="w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500"
               placeholder="Your Email"
+              required
             />
           </div>
 
@@ -27,6 +81,7 @@ const Login = () => {
               id="password"
               className="w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 outline-blue-500 "
               placeholder="Password"
+              required
             />
           </div>
 
@@ -66,9 +121,9 @@ const Login = () => {
             </Link>
             .
           </div>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 

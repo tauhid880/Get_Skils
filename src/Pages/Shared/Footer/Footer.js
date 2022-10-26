@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-zinc-600 text-white">
-      <div className="grid grid-flow-col gap-4">
+    <footer className="footer footer-center  bg-zinc-600 text-white">
+      <div className="grid grid-flow-col gap-4 m-5">
         <Link className="link link-hover">About us</Link>
         <Link className="link link-hover">Contact</Link>
         <Link className="link link-hover">Pricing</Link>
         <Link className="link link-hover">Press kit</Link>
       </div>
       <div>
-        <div className="grid grid-flow-col gap-4">
+        <div className="grid grid-flow-col gap-3">
           <Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
