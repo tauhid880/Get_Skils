@@ -73,6 +73,17 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end  justify-center ">
+        <label
+          for="toggleFour"
+          className="flex cursor-pointer select-none items-center"
+        >
+          <div className="relative">
+            <input type="checkbox" id="toggleFour" class="sr-only" />
+            <div className="box bg-black block h-8 w-14 rounded-full"></div>
+            <div className="dot absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition"></div>
+          </div>
+        </label>
+
         <div className="  text-xs lg:text-sm text-black">
           {user?.uid ? (
             <>

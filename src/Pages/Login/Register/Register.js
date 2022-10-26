@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { fromJSON } from "postcss";
 
 const Register = () => {
   const { providerLogin, createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,6 +21,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate("/");
       })
       .catch((e) => console.error(e));
   };
