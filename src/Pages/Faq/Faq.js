@@ -6,7 +6,7 @@ const Faq = () => {
       <h1 className="text-5xl mt-20  text-center">
         We’re hoping we’ve provided you with some answers
       </h1>
-      <div className="flex flex-row  mt-10">
+      <div className="flex lg:flex-row flex-col items-center mt-10">
         <div className="collapse w-1/2">
           <input type="checkbox" />
           <div className="collapse-title text-black text-xl font-medium">
