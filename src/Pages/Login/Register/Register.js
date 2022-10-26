@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
-import { fromJSON } from "postcss";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 const Register = () => {
-  const { providerLogin, createUser } = useContext(AuthContext);
+  const { providerLogin, createUser, githubLogIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (event) => {
@@ -45,6 +44,20 @@ const Register = () => {
       });
   };
 
+  // Github
+  const githubProvider = new GithubAuthProvider();
+  const handleGithubSignIn = () => {
+    githubLogIn(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  };
+
   return (
     <section className=" bg-gray-700 h-full">
       <div className=" lg:w-6/12 px-4 mx-auto py-10">
@@ -55,6 +68,7 @@ const Register = () => {
             </div>
             <div className="btn-wrapper normal-case text-center">
               <button
+                onClick={handleGithubSignIn}
                 className="bg-white normal-case text-black active:bg-blue-200  font-semibold px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1  shadow hover:shadow-md inline-flex items-center  text-xs ease-linear transition-all duration-150"
                 type="button"
               >

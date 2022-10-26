@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { providerLogin, signIn } = useContext(AuthContext);
+  const { providerLogin, signIn, githubLogIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (event) => {
@@ -28,6 +28,7 @@ const Login = () => {
       });
   };
 
+  // Google log in
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = () => {
@@ -41,6 +42,20 @@ const Login = () => {
         setError(error.message);
       });
   };
+  // Github log  in
+  const githubProvider = new GithubAuthProvider();
+  const handleGithubSignIn = () => {
+    githubLogIn(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  };
+
   return (
     <div className="bg-gray-700">
       <div className="flex justify-center h-screen w-screen items-center">
@@ -61,6 +76,7 @@ const Login = () => {
               </div>
               <div className="btn-wrapper normal-case text-center">
                 <button
+                  onClick={handleGithubSignIn}
                   className="bg-white normal-case text-black active:bg-blue-200  font-semibold px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1  shadow hover:shadow-md inline-flex items-center  text-xs ease-linear transition-all duration-150"
                   type="button"
                 >
