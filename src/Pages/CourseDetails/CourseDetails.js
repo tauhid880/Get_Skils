@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFilePdf } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import ReactToPrint from "react-to-print";
 import { useRef } from "react";
 
 const CourseDetails = () => {
   const ref = useRef();
+  const [cart, setcart] = useState([]);
+  const handlePremiumAccess = (course) => {
+    console.log(course);
+    const newCart = [...cart, course];
+    setcart(newCart);
+  };
   const course = useLoaderData();
   const {
     title,
@@ -57,21 +63,21 @@ const CourseDetails = () => {
           </div>
           {/* PDF end */}
           <div>
-            <div class="shadow-lg w-64 bg-red-200 dark:bg-gray-800 p-4">
-              <p class="text-gray-800 dark:text-gray-50 text-xl font-medium mb-4">
+            <div className="shadow-lg w-64 bg-red-200 dark:bg-gray-800 p-4">
+              <p className="text-gray-800 dark:text-gray-50 text-xl font-medium mb-4">
                 Course Features
               </p>
-              <p class="text-gray-900 dark:text-white text-3xl font-bold">
+              <p className="text-gray-900 dark:text-white text-3xl font-bold">
                 {price}
-                <span class="text-gray-500 text-sm">/ Lifetime</span>
+                <span className="text-gray-500 text-sm">/ Lifetime</span>
               </p>
-              <p class="text-gray-600 dark:text-gray-100  text-xs mt-4">
+              <p className="text-gray-600 dark:text-gray-100  text-xs mt-4">
                 For most businesses that want to optimize web queries.
               </p>
-              <ul class="text-sm text-gray-600 dark:text-gray-100 w-full mt-6 mb-6">
-                <li class="mb-3 flex items-center ">
+              <ul className="text-sm text-gray-600 dark:text-gray-100 w-full mt-6 mb-6">
+                <li className="mb-3 flex items-center ">
                   <svg
-                    class="h-6 w-6 mr-2"
+                    className="h-6 w-6 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
                     width="6"
                     height="6"
@@ -83,9 +89,9 @@ const CourseDetails = () => {
                   </svg>
                   Course Duration : {duration}
                 </li>
-                <li class="mb-3 flex items-center ">
+                <li className="mb-3 flex items-center ">
                   <svg
-                    class="h-6 w-6 mr-2"
+                    className="h-6 w-6 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
                     width="6"
                     height="6"
@@ -97,9 +103,9 @@ const CourseDetails = () => {
                   </svg>
                   Lectures : {lectures}
                 </li>
-                <li class="mb-3 flex items-center ">
+                <li className="mb-3 flex items-center ">
                   <svg
-                    class="h-6 w-6 mr-2"
+                    className="h-6 w-6 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
                     width="6"
                     height="6"
@@ -111,9 +117,9 @@ const CourseDetails = () => {
                   </svg>
                   Unlimited Templates
                 </li>
-                <li class="mb-3 flex items-center ">
+                <li className="mb-3 flex items-center ">
                   <svg
-                    class="h-6 w-6 mr-2"
+                    className="h-6 w-6 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
                     width="6"
                     height="6"
@@ -125,9 +131,9 @@ const CourseDetails = () => {
                   </svg>
                   Free premium dashboard
                 </li>
-                <li class="mb-3 flex items-center ">
+                <li className="mb-3 flex items-center ">
                   <svg
-                    class="h-6 w-6 mr-2"
+                    className="h-6 w-6 mr-2"
                     xmlns="http://www.w3.org/2000/svg"
                     width="6"
                     height="6"
@@ -139,12 +145,12 @@ const CourseDetails = () => {
                   </svg>
                   Best ranking
                 </li>
-                <li class="mb-3 flex items-center opacity-50">
+                <li className="mb-3 flex items-center opacity-50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="6"
                     height="6"
-                    class="h-6 w-6 mr-2"
+                    className="h-6 w-6 mr-2"
                     fill="red"
                     viewBox="0 0 1792 1792"
                   >
@@ -153,12 +159,14 @@ const CourseDetails = () => {
                   Premium resource
                 </li>
               </ul>
-              <button
+              <Link
+                to="/cart"
+                onClick={() => handlePremiumAccess(course)}
                 type="button"
-                class="py-2 px-4 btn btn-outline btn-warning   text-black w-full text-center text-base font-semibold shadow-md rounded-lg "
+                className="py-2 px-4 btn btn-outline btn-warning   text-black w-full text-center text-base font-semibold shadow-md rounded-lg "
               >
                 <p className="text-black normal-case">Get premium access</p>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
