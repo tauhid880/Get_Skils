@@ -5,7 +5,7 @@ const CourseCard = ({ courses }) => {
   const { picture, name, duration, title, id } = courses;
   return (
     <div>
-      <div className="card w-96  bg-yellow-100  shadow-2xl rounded-none">
+      <div className="card w-full h-full  bg-yellow-100  shadow-2xl rounded-none">
         <figure className="object-cover">
           <img src={picture} alt="Shoes" />
         </figure>

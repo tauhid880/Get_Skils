@@ -1,8 +1,11 @@
 import React from "react";
 import { FaFilePdf } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import ReactToPrint from "react-to-print";
+import { useRef } from "react";
 
 const CourseDetails = () => {
+  const ref = useRef();
   const course = useLoaderData();
   const {
     title,
@@ -22,30 +25,37 @@ const CourseDetails = () => {
             alt=""
             className="lg:max-w-sm w-9/12 rounded-lg shadow-2xl object-cover"
           />
-          <div className="bg-red-100 shadow-2xl p-5">
-            <div className="flex lg:flex-row  flex-col justify-start gap-5 items-center">
-              <div>
-                <h1 className="lg:text-3xl text-4xl  font-bold text-start lg:mr-20 mr-5">
-                  {title}
-                </h1>
-              </div>
-              <div>
-                <Link>
-                  <button className="btn btn-ghost">
-                    <FaFilePdf className="lg:text-5xl text-3xl lg:p-2 p-1 text-center text-red-400"></FaFilePdf>
-                    Download PDF
-                  </button>
-                </Link>
+          {/* print pdf */}
+          <div className="print bg-red-100 shadow-2xl p-5">
+            <div className="sss">
+              <div ref={ref} className="a m-10">
+                <div className="flex lg:flex-row  flex-col justify-start gap-5 items-center">
+                  <div>
+                    <h1 className="lg:text-3xl text-4xl  font-bold text-start lg:mr-20 mr-5">
+                      {title}
+                    </h1>
+                  </div>
+                </div>
+                <p className="py-6 min-w-full">{details}</p>
+                <p className="badge badge-error font-bold  badge-outline mr-5">
+                  Course Duration : {duration}
+                </p>
+                <p className="badge badge-primary font-bold  badge-outline lg:mr-5 my-5 ">
+                  Course Instructor : {Instructor_name}
+                </p>
               </div>
             </div>
-            <p className="py-6 min-w-full">{details}</p>
-            <p className="badge badge-error font-bold  badge-outline mr-5">
-              Course Duration : {duration}
-            </p>
-            <p className="badge badge-primary font-bold  badge-outline lg:mr-5 my-5 ">
-              Course Instructor : {Instructor_name}
-            </p>
+            <ReactToPrint
+              trigger={() => (
+                <button className="btn btn-ghost">
+                  <FaFilePdf className="lg:text-5xl text-3xl lg:p-2 p-1 text-center text-red-400"></FaFilePdf>
+                  Download PDF
+                </button>
+              )}
+              content={() => ref.current}
+            ></ReactToPrint>
           </div>
+          {/* PDF end */}
           <div>
             <div class="shadow-lg w-64 bg-red-200 dark:bg-gray-800 p-4">
               <p class="text-gray-800 dark:text-gray-50 text-xl font-medium mb-4">
@@ -147,7 +157,7 @@ const CourseDetails = () => {
                 type="button"
                 class="py-2 px-4 btn btn-outline btn-warning   text-black w-full text-center text-base font-semibold shadow-md rounded-lg "
               >
-                <p className="text-black normal-case">Add to Cart</p>
+                <p className="text-black normal-case">Get premium access</p>
               </button>
             </div>
           </div>

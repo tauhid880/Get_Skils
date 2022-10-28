@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import CourseList from "../../CourseList/CourseList";
 
 const LeftSideBar = () => {
@@ -10,11 +9,11 @@ const LeftSideBar = () => {
       .then((data) => setCategories(data));
   }, []);
   return (
-    <div className="">
-      <h1 className="text-2xl font-semibold text-center w-auto lg:w-full mt-3">
+    <div className=" bg-zinc-400 ">
+      <h1 className="text-2xl py-5 font-semibold text-center w-auto lg:w-full ">
         Total {categories.length} Course
       </h1>
-      <div className="m-5">
+      <div className="mx-5">
         {categories.map((category) => (
           <CourseList key={category.id} courseList={category}></CourseList>
         ))}

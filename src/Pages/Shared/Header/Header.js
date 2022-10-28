@@ -32,7 +32,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu text-black menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52"
+            className="menu text-white menu-compact bg-stone-600 w-screen dropdown-content mt-3 p-2 shadow "
           >
             <li className="">
               <Link to={"/"}>Home</Link>
@@ -73,7 +73,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end flex  justify-center items-center">
-        <div className="  text-xs lg:text-sm text-black">
+        <div className=" flex  items-center  text-xs lg:text-sm text-black">
           {user?.uid ? (
             <>
               <button onClick={handleLogOut} className="btn btn-ghost mx-2">
@@ -102,7 +102,7 @@ const Header = () => {
           >
             {user?.photoURL ? (
               <img
-                className="lg:w-10 w-3 rounded-full"
+                className="lg:w-10 w-8 rounded-full"
                 src={user?.photoURL}
                 alt=""
               />

@@ -2,14 +2,14 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <div className="min-h-screen">
-      <h1 className="text-5xl mt-20  text-center">
+    <div className="h-screen">
+      <h1 className="lg:text-5xl text-3xl mt-20 mx-5  text-center">
         We’re hoping we’ve provided you with some answers
       </h1>
-      <div className="flex lg:flex-row flex-col items-center mt-10">
-        <div className="collapse w-1/2">
+      <div className="grid grid-flow-row gap-10 text-start mt-10">
+        <div className="collapse">
           <input type="checkbox" />
-          <div className="collapse-title text-black text-xl font-medium">
+          <div className="collapse-title text-black lg:text-xl text-lg font-medium">
             What are the technology requirements to take an online course?
           </div>
           <div className="collapse-content">
@@ -21,9 +21,9 @@ const Faq = () => {
             </p>
           </div>
         </div>
-        <div className="collapse w-1/2">
+        <div className="collapse">
           <input type="checkbox" />
-          <div className="collapse-title text-black text-xl font-medium">
+          <div className="collapse-title text-black lg:text-xl text-lg font-medium">
             What are the admission requirements for Online Learning courses?
           </div>
           <div className="collapse-content">
@@ -46,9 +46,9 @@ const Faq = () => {
             </p>
           </div>
         </div>
-        <div className="collapse w-1/2">
+        <div className="collapse ">
           <input type="checkbox" />
-          <div className="collapse-title text-black text-xl font-medium">
+          <div className="collapse-title lg:text-xl text-lg text-black text-xl font-medium">
             Will I get credit for this course?
           </div>
           <div className="collapse-content">
@@ -60,9 +60,9 @@ const Faq = () => {
             </p>
           </div>
         </div>
-        <div className="collapse w-1/2">
+        <div className="collapse ">
           <input type="checkbox" />
-          <div className="collapse-title text-black text-xl font-medium">
+          <div className="collapse-title lg:text-xl text-lg text-black text-xl font-medium">
             What happens if I don’t finish the course?
           </div>
           <div className="collapse-content">
