@@ -4,7 +4,7 @@ import CourseList from "../../CourseList/CourseList";
 const LeftSideBar = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/courses/category")
+    fetch("https://get-skills-server.vercel.app/courses/category")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);

@@ -22,6 +22,7 @@ const CourseDetails = () => {
     price,
     lectures,
   } = course;
+
   return (
     <div className="min-h-full   ">
       <div className="hero min-h-screen bg-zinc-300">
