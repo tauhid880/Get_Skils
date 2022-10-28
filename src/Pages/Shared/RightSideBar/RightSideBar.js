@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CourseCard from "../../CourseCard/CourseCard";
 
 const RightSideBar = () => {
   const [categories, setCategories] = useState([]);
@@ -11,26 +12,7 @@ const RightSideBar = () => {
   return (
     <div className="grid col lg:grid-cols-3 gap-5 m-0 lg:p-10  shadow-2xl">
       {categories.map((category) => (
-        <div className="card w-96  bg-yellow-100  shadow-2xl rounded-none">
-          <figure className="object-cover">
-            <img src={category.picture} alt="Shoes" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">
-              {category.name}
-              <div className="badge  badge-success">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <div className="badge badge-outline font-semibold">
-                Course time : {category.duration}
-              </div>
-              <div className="badge badge-error font-bold  badge-outline">
-                <Link to="/blog">Details</Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CourseCard key={category.id} courses={category}></CourseCard>
       ))}
     </div>
   );

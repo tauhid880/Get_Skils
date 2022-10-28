@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CourseList from "../../CourseList/CourseList";
 
 const LeftSideBar = () => {
   const [categories, setCategories] = useState([]);
@@ -11,17 +12,11 @@ const LeftSideBar = () => {
   return (
     <div className="">
       <h1 className="text-2xl font-semibold text-center w-auto lg:w-full mt-3">
-        Total {categories.length} Courses.
+        Total {categories.length} Course
       </h1>
       <div className="m-5">
         {categories.map((category) => (
-          <Link
-            to={category.id}
-            key={category.id}
-            className="btn btn-block glass text-gray-900 shadow-xl my-4 normal-case"
-          >
-            {category.name}
-          </Link>
+          <CourseList key={category.id} courseList={category}></CourseList>
         ))}
       </div>
     </div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero  bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
         <Lottie animationData={Animation} loop={true} />
         <div>

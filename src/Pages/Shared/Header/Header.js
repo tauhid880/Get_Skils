@@ -11,7 +11,7 @@ const Header = () => {
       .catch((error) => console.error(error));
   };
   return (
-    <div className="navbar bg-lime-100 w-auto p-0">
+    <div className="navbar bg-lime-100 min-w-full p-0">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost text-black lg:hidden">
@@ -72,18 +72,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end  justify-center ">
-        <label
-          for="toggleFour"
-          className="flex cursor-pointer select-none items-center"
-        >
-          <div className="relative">
-            <input type="checkbox" id="toggleFour" class="sr-only" />
-            <div className="box bg-black block h-8 w-14 rounded-full"></div>
-            <div className="dot absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition"></div>
-          </div>
-        </label>
-
+      <div className="navbar-end flex  justify-center items-center">
         <div className="  text-xs lg:text-sm text-black">
           {user?.uid ? (
             <>
@@ -93,29 +82,34 @@ const Header = () => {
             </>
           ) : (
             <>
-              <div className="flex">
-                <Link
-                  to={"/login"}
-                  className="btn btn-ghost border-0 text-xs p-1 m-3  lg:text-sm text-black"
-                >
-                  Log In
-                </Link>
-                <Link
-                  to={"/register"}
-                  className="btn btn-ghost border-0 text-xs p-1 m-3 lg:text-sm text-black"
-                >
-                  Register
-                </Link>
-              </div>
+              <Link
+                to={"/login"}
+                className="btn btn-ghost border-0 text-xs p-1 lg:m-3 m-1  lg:text-sm text-black"
+              >
+                Log In
+              </Link>
+              <Link
+                to={"/register"}
+                className="btn btn-ghost border-0 text-xs p-1 lg:m-3 m-1 lg:text-sm text-black"
+              >
+                Register
+              </Link>
             </>
           )}
-        </div>
-        <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-          {user?.photoURL ? (
-            <img className="w-10 rounded-full" src={user?.photoURL} alt="" />
-          ) : (
-            <FaUser></FaUser>
-          )}
+          <div
+            className="tooltip tooltip-bottom items-center justify-center"
+            data-tip={user?.displayName}
+          >
+            {user?.photoURL ? (
+              <img
+                className="lg:w-10 w-3 rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
+            ) : (
+              <FaUser className="lg:w-10 w-3 rounded-full"></FaUser>
+            )}
+          </div>
         </div>
       </div>
     </div>
